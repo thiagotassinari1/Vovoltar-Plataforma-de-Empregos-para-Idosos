@@ -27,7 +27,67 @@ A interface foi projetada para ser simples, intuitiva e compreensível, removend
 
 Este é um projeto **full-stack** que utiliza as seguintes tecnologias:
 
-* **Front-end:** HTML5, CSS3 e JavaScript.
-* **Back-end:** JavaScript rodando em ambiente Node.js.
-* **Banco de Dados:** SQL.
+* **Front-end:** HTML5, CSS3 e JavaScript (em uma arquitetura de múltiplas páginas).
+* **Back-end:** API RESTful com JavaScript, Node.js e Express.
+* **Banco de Dados:** SQL (MySQL).
 * **Comunicação:** A interação entre cliente, servidor e banco de dados é feita via protocolo HTTP e APIs, utilizando o formato JSON.
+
+---
+
+## 🚀 Instalação e Execução
+
+O projeto é dividido em duas partes que devem ser executadas separadamente: o **Back-end** (API) e o **Front-end** (site).
+
+### 1. Configurando o Back-end (API)
+
+O servidor Node.js que cuida de toda a lógica está na pasta `back_api`.
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/thiagotassinari1/Vovoltar-Plataforma-de-Empregos-para-Idosos.git
+    ```
+
+2.  **Navegue até a pasta da API:**
+    ```bash
+    cd Vovoltar-Plataforma-de-Empregos-para-Idosos/back_api
+    ```
+
+3.  **Instale as dependências do Back-end:**
+    ```bash
+    npm install
+    ```
+
+4.  **Configure o Banco de Dados (MySQL):**
+    * Você precisa ter um servidor MySQL rodando localmente.
+    * Crie um novo banco de dados no seu servidor (ex: `CREATE DATABASE vovoltar_db;`).
+    * Importe o arquivo `vovoltar_db.sql` (localizado na pasta `Database` na raiz do projeto) para o banco de dados que você acabou de criar. Isso criará todas as tabelas e estruturas necessárias.
+
+5.  **Configure o Ambiente (`.env`):**
+    * O usuário deve **criar um arquivo `.env`** na raiz da pasta `back_api`.
+    * Use o arquivo `.env.example` como um guia para saber quais chaves são necessárias.
+    * Preencha o `.env` com as informações do banco de dados que você **acabou de configurar**:
+    ```
+    # Porta do servidor
+    PORT = 3001
+    
+    # Credenciais do Banco de Dados
+    DB_HOST = localhost
+    DB_USER = root
+    DB_PASSWORD = (sua senha do mysql)
+    DB_DATABASE = vovoltar_db
+    ```
+
+6.  **Inicie o servidor Back-end:**
+    ```bash
+    npm start
+    ```
+    O servidor estará rodando na porta configurada no .env.
+
+### 2. Executando o Front-end
+
+O Front-end é composto por arquivos HTML estáticos (nas pastas `home`, `login`, `perfil`, etc.) que consomem a API.
+
+1.  **Abra os arquivos no navegador:**
+    * Não há instalação. Basta abrir os arquivos `.html` (preferencialmente `login/index.html`) diretamente no seu navegador.
+
+2.  **Use o site:** O JavaScript do front-end fará as chamadas (`fetch`) para o servidor back-end que você iniciou no Passo 1.
